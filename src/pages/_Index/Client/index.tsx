@@ -143,7 +143,7 @@ import {onMount} from "solid-js"
 			try{
 				errorLog.response = await response.text()
 			}
-			catch(){
+			catch{
 			}
 
 			const fileText = (""
