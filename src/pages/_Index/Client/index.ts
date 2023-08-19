@@ -30,7 +30,7 @@ import {orderBy} from "natural-orderby"
 			Spinner:  document.getElementById("Spinner" ),
 		}
 
-		const SpotifyData = await fetch("./get_Spotify_Credentials")
+		const SpotifyData = await fetch(".netlify/functions/get_Spotify_Credentials")
 		const Spotify     = (await SpotifyData.json() as Spotify)
 		console.log({Spotify})
 

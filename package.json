@@ -14,6 +14,8 @@
 	"dependencies": {
 		"buffer":                 "6.0.3",
 
+		"@netlify/functions":     "1.6.0",
+
 		"astro":                  "2.10.12",
 		"@astrojs/solid-js":      "2.2.1",
 
