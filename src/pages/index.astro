@@ -6,6 +6,9 @@ import URL_Client from "./_Index/Client/index?url"
 //###  Layout  ###//
 import Layout from "Layouts/Main/index.astro"
 
+//###  Assets.URLs  ###//
+import URL_Logo from "./_Index/Assets/SpotifyLogo_CMYK.png?url"
+
 //###  Components  ###//
 import Spinner from "./_Index/Components/Spinner/index.astro"
 
@@ -24,6 +27,15 @@ import "./_Index/Style.scss"
     <!----------------------------------------------------------------------------------------------------------------->
     <!--  Layout                                                                                                     -->
     <!----------------------------------------------------------------------------------------------------------------->
+
+			<div id="Logo">
+				<img
+					src    = {URL_Logo}
+					height = 90
+				/>
+			</div>
+
+			<div class="DIVIDER"/>
 
 			<div id="Info">
 				{"Loading followed artists."}
@@ -44,6 +56,12 @@ import "./_Index/Style.scss"
 			>
 				{"Retry"}
 			</button>
+
+			<div class="DIVIDER"/>
+
+			<div id="LogoBalancer">
+				<img height=90/>
+			</div>
 
 
     <!----------------------------------------------------------------------------------------------------------------->

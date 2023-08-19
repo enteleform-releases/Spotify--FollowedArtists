@@ -1,6 +1,8 @@
 //###  NPM  ###//
 import {defineConfig} from "astro/config"
+import Netlify        from "@astrojs/netlify/functions"
 import Solid          from "@astrojs/solid-js"
+
 
 
 //####################################################################################################################//
@@ -8,6 +10,9 @@ import Solid          from "@astrojs/solid-js"
 //####################################################################################################################//
 
 	export default defineConfig({
+
+		output:  "server",
+		adapter: Netlify(),
 
 		server: {
 			port: 3000,

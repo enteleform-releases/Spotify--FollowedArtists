@@ -8,9 +8,9 @@
 //####################################################################################################################//
 
 	$Mono_Settings: (
-		"H_Min":240, "H_Max":240,
-		"S_Min":12,  "S_Max":8,
-		"L_Min":5,   "L_Max":95,
+		"H_Min":220, "H_Max":220,
+		"S_Min":10,  "S_Max":10,
+		"L_Min":7,   "L_Max":90,
 	);
 
 	@function Color($percent, $settings){
@@ -72,6 +72,10 @@
 		display: none;
 	}
 
+	.DIVIDER{
+		flex: 1;
+	}
+
 	html,
 	body{
 		width:  100%;
@@ -83,12 +87,21 @@
 		flex-direction:  column;
 		align-items:     center;
 		justify-content: center;
-		background:      var(--Mono_0 );
+		background:      var(--Mono_5 );
 		color:           var(--Mono_70);
 	}
 
-	body > :not(:last-child){
+	body > :not(:is(:last-child, .DIVIDER)){
 		margin-bottom: 1.5rem;
+	}
+
+	#Logo,
+	#LogoBalancer{
+		margin-top: 3rem;
+	}
+
+	#LogoBalancer{
+		opacity: 0;
 	}
 
 	#Info{
@@ -102,7 +115,7 @@
 		font-size:     3rem;
 		background:    var(--Mono_20);
 		color:         var(--Mono_80);
-		border:        2px solid var(--Mono_40);
+		border:        4px solid var(--Mono_40);
 		border-radius: 4px;
 		cursor:        pointer;
 

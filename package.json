@@ -6,9 +6,8 @@
 	"private": true,
 
 	"scripts": {
-		"dev":     "astro dev",
-		"build":   "astro build",
-		"preview": "astro preview"
+		"dev":   "astro dev",
+		"build": "astro build"
 	},
 
 	"dependencies": {
@@ -17,6 +16,7 @@
 		"@netlify/functions":     "1.6.0",
 
 		"astro":                  "2.10.12",
+		"@astrojs/netlify":       "2.6.0",
 		"@astrojs/solid-js":      "2.2.1",
 
 		"solid-js":               "1.7.11",

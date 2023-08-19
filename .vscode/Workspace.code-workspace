@@ -57,10 +57,9 @@
 		"version": "2.0.0",
 
 		"tasks": [
-			{"label":"Install Dependencies", "command":"yarn install",    "type":"shell", "promptOnClose":true, "presentation":{"panel":"dedicated", "reveal":"always", "showReuseMessage":false}},
-			{"label":"Dev",                  "command":"netlify dev",     "type":"shell", "promptOnClose":true, "presentation":{"panel":"dedicated", "reveal":"always", "showReuseMessage":false}},
-			{"label":"Build",                "command":"netlify build",   "type":"shell", "promptOnClose":true, "presentation":{"panel":"dedicated", "reveal":"always", "showReuseMessage":false}},
-			{"label":"Preview",              "command":"npm run preview", "type":"shell", "promptOnClose":true, "presentation":{"panel":"dedicated", "reveal":"always", "showReuseMessage":false}},
+			{"label":"Install Dependencies", "command":"yarn install",  "type":"shell", "promptOnClose":true, "presentation":{"panel":"dedicated", "reveal":"always", "showReuseMessage":false}},
+			{"label":"Dev",                  "command":"netlify dev",   "type":"shell", "promptOnClose":true, "presentation":{"panel":"dedicated", "reveal":"always", "showReuseMessage":false}},
+			{"label":"Build",                "command":"netlify build", "type":"shell", "promptOnClose":true, "presentation":{"panel":"dedicated", "reveal":"always", "showReuseMessage":false}},
 		],
 	},
 
