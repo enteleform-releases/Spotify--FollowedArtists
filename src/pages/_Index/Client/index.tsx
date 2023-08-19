@@ -58,6 +58,10 @@ import {onMount} from "solid-js"
 //##>  Utilities                                                                                                    ##//
 //####################################################################################################################//
 
+	const RegEx = {
+		StartsWith_Alphanumeric: /^[A-Za-z0-9]/
+	} as const
+
 	function flow_Login(
 		{$Page,       Spotify,         rootURL       }:
 		{$Page:$Page, Spotify:Spotify, rootURL:string}
@@ -108,12 +112,11 @@ import {onMount} from "solid-js"
 			const accessToken = data.access_token;
 
 			// Use the access token to make API requests
-			const artists = await getFollowedArtists(accessToken);
+			const artists = await get_Artists(accessToken)
 
 			// Display the followed artists
-			const artistCount   = artists.length
-			const sortedArtists = orderBy(artists)
-			const fileText      = sortedArtists.join("\n")
+			const artistCount = artists.length
+			const fileText    = artists.join("\n")
 
 			$Page.Info.innerText =
 				(artistCount === 1)
@@ -141,7 +144,7 @@ import {onMount} from "solid-js"
 		}
 	}
 
-	async function getFollowedArtists(accessToken:any) {
+	async function get_Artists(accessToken:any) {
 		const artists = [];
 		let nextPage = "https://api.spotify.com/v1/me/following?type=artist&limit=50";
 
@@ -164,7 +167,27 @@ import {onMount} from "solid-js"
 			nextPage = data.artists.next;
 		}
 
-		return artists;
+		const sorted = sort_Artists(artists)
+
+		return sorted
+	}
+
+	function sort_Artists(artists:string[]){
+		const alphanumericArtists: string[] = []
+		const otherArtists:        string[] = []
+
+		for(const artist of artists){
+			if(RegEx.StartsWith_Alphanumeric.exec(artist))
+				{alphanumericArtists.push(artist)}
+			else
+				{otherArtists.push(artist)}
+		}
+
+		const sorted_Alphanumeric = orderBy(alphanumericArtists)
+		const sorted_Other        = orderBy(otherArtists       )
+		const sorted              = sorted_Other.concat(sorted_Alphanumeric)
+
+		return sorted
 	}
 
 	function set_Download_Action(
