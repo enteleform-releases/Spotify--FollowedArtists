@@ -34,6 +34,7 @@
 		"skipLibCheck":        true,
 		"skipDefaultLibCheck": true,
 
+		"allowImportingTsExtensions":   true,
 		"allowJs":                      true,
 		"allowSyntheticDefaultImports": true,
 		"downlevelIteration":           true,
