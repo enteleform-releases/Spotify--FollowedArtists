@@ -4,6 +4,20 @@
 
 
 //####################################################################################################################//
+//##>  Variables                                                                                                    ##//
+//####################################################################################################################//
+
+	:root{
+		--ElevationScale:                 2;
+		--SurfaceElevation_OpacityFactor: 2.5;
+		--TextElevation_OpacityFactor:    0.75;
+		//--ElevationScale:                 1;
+		//--SurfaceElevation_OpacityFactor: 2;
+		//--TextElevation_OpacityFactor:    0.75;
+	}
+
+
+//####################################################################################################################//
 //##>  Colors                                                                                                       ##//
 //####################################################################################################################//
 
@@ -92,7 +106,7 @@
 	}
 
 	body > :not(:is(:last-child, .DIVIDER)){
-		margin-bottom: 1.5rem;
+		margin-bottom: 2rem;
 	}
 
 	#Logo,
@@ -111,6 +125,8 @@
 
 	#Download,
 	#Retry{
+		--Transition: 400ms;
+
 		padding:       1rem 2rem;
 		font-size:     3rem;
 		background:    var(--Mono_20);
@@ -118,7 +134,26 @@
 		border:        4px solid var(--Mono_40);
 		border-radius: 4px;
 		cursor:        pointer;
+		filter:        brightness(1);
+		transition:
+			box-shadow var(--Transition) ease-in-out,
+			filter     var(--Transition) ease-in-out,
+			scale      var(--Transition) ease-in-out;
 
-		&:hover {filter:brightness(1.15);}
-		&:active{filter:brightness(1.3 );}
+		&:hover {--ElevationScale:2;    --SurfaceElevation_OpacityFactor:5; --Transition:250ms; filter:brightness(1.1); scale:1.025;}
+		&:active{--ElevationScale:0.75; --SurfaceElevation_OpacityFactor:7; --Transition:100ms; filter:brightness(1.2); scale:0.975;}
+	}
+
+	.ElevatedSurface{
+		box-shadow:
+			0  calc(1.5px * var(--ElevationScale))  calc(3px * var(--ElevationScale))  calc(-2px * var(--ElevationScale))  rgba(0, 0, 0, calc(0.24 * var(--SurfaceElevation_OpacityFactor))),
+			0  calc(3px   * var(--ElevationScale))  calc(6px * var(--ElevationScale))  calc(0px  * var(--ElevationScale))  rgba(0, 0, 0, calc(0.16 * var(--SurfaceElevation_OpacityFactor))),
+			0  calc(4.5px * var(--ElevationScale))  calc(9px * var(--ElevationScale))  calc(4px  * var(--ElevationScale))  rgba(0, 0, 0, calc(0.10 * var(--SurfaceElevation_OpacityFactor)));
+	}
+
+	.ElevatedText{
+		text-shadow:
+			0  calc(0.75px * var(--ElevationScale))  calc(1.5px * var(--ElevationScale))  rgba(0, 0, 0, calc(0.50 * var(--TextElevation_OpacityFactor))),
+			0  calc(1.5px  * var(--ElevationScale))  calc(3px   * var(--ElevationScale))  rgba(0, 0, 0, calc(0.33 * var(--TextElevation_OpacityFactor))),
+			0  calc(2.25px * var(--ElevationScale))  calc(4.5px * var(--ElevationScale))  rgba(0, 0, 0, calc(0.25 * var(--TextElevation_OpacityFactor)));
 	}
