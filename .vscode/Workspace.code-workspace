@@ -1,0 +1,78 @@
+{
+
+//####################################################################################################################//
+//##>  Folders                                                                                                      ##//
+//####################################################################################################################//
+
+	"folders": [
+		{"name":"___  ROOT  ___________________", "path":".."    },
+		{"name":"___  SOURCE  _________________", "path":"../src"},
+	],
+
+
+//####################################################################################################################//
+//##>  Settings                                                                                                     ##//
+//####################################################################################################################//
+
+	"settings": {
+
+		"window.title": "Spotify - Followed Artists",
+
+		"editor.tabSize":           2,
+		"editor.insertSpaces":      false,
+		"editor.detectIndentation": false,
+		"terminal.integrated.cwd":  "${workspaceFolder:___  ROOT  ___________________}",
+
+		"files.exclude": {
+			"src":          true,
+			"node_modules": true,
+			"env.d.ts":     true,
+		},
+
+		"search.exclude": {
+			"src":          true,
+			"node_modules": true,
+			"env.d.ts":     true,
+		},
+
+		"deno.enable":   true,
+		"deno.lint":     true,
+		"deno.unstable": true,
+
+		"deno.importMap": ".netlify/edge-functions-import-map.json",
+		"deno.path":      "C:\\Users\\Fico\\AppData\\Roaming\\netlify\\Config\\deno-cli\\deno.exe",
+
+		"deno.enablePaths": [
+			"netlify/edge-functions"
+		],
+
+	},
+
+
+//####################################################################################################################//
+//##>  Tasks                                                                                                        ##//
+//####################################################################################################################//
+
+	"tasks": {
+		"version": "2.0.0",
+
+		"tasks": [
+			{"label":"Install Dependencies", "command":"yarn install",    "type":"shell", "promptOnClose":true, "presentation":{"panel":"dedicated", "reveal":"always", "showReuseMessage":false}},
+			{"label":"Dev",                  "command":"netlify dev",     "type":"shell", "promptOnClose":true, "presentation":{"panel":"dedicated", "reveal":"always", "showReuseMessage":false}},
+			{"label":"Build",                "command":"netlify build",   "type":"shell", "promptOnClose":true, "presentation":{"panel":"dedicated", "reveal":"always", "showReuseMessage":false}},
+			{"label":"Preview",              "command":"npm run preview", "type":"shell", "promptOnClose":true, "presentation":{"panel":"dedicated", "reveal":"always", "showReuseMessage":false}},
+		],
+	},
+
+
+//####################################################################################################################//
+//##>  Extensions                                                                                                   ##//
+//####################################################################################################################//
+
+	"extensions": {
+		"recommendations": [
+			"denoland.vscode-deno",
+		]
+	}
+
+}

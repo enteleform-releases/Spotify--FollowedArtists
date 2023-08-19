@@ -1,0 +1,85 @@
+---
+
+//###  Styles  ###//
+import "Styles/Normalize.css"
+import "./Style.scss"
+
+//###  Font.Exo-2  ###//
+import "@fontsource/exo-2/latin-100.css"
+import "@fontsource/exo-2/latin-200.css"
+import "@fontsource/exo-2/latin-300.css"
+import "@fontsource/exo-2/latin-400.css"
+import "@fontsource/exo-2/latin-500.css"
+import "@fontsource/exo-2/latin-600.css"
+import "@fontsource/exo-2/latin-700.css"
+import "@fontsource/exo-2/latin-800.css"
+import "@fontsource/exo-2/latin-900.css"
+
+//###  Font.Exo-2.Italic  ###//
+import "@fontsource/exo-2/latin-100-italic.css"
+import "@fontsource/exo-2/latin-200-italic.css"
+import "@fontsource/exo-2/latin-300-italic.css"
+import "@fontsource/exo-2/latin-400-italic.css"
+import "@fontsource/exo-2/latin-500-italic.css"
+import "@fontsource/exo-2/latin-600-italic.css"
+import "@fontsource/exo-2/latin-700-italic.css"
+import "@fontsource/exo-2/latin-800-italic.css"
+import "@fontsource/exo-2/latin-900-italic.css"
+
+
+//####################################################################################################################//
+//##>  Props                                                                                                        ##//
+//####################################################################################################################//
+
+	export type Props = {
+		title?: string
+	}
+
+	const {
+		title = "",
+	} = Astro.props
+
+
+
+---
+<!--#################################################################################################################-->
+<!--##>  HTML                                                                                                      ##-->
+<!--#################################################################################################################-->
+
+	<html lang="en">
+
+
+    <!----------------------------------------------------------------------------------------------------------------->
+    <!--  Head                                                                                                       -->
+    <!----------------------------------------------------------------------------------------------------------------->
+
+			<head>
+
+				<!--###  Document  ###-->
+				<title>{title}</title>
+				<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+
+				<!--###  Meta  ###-->
+				<meta charset="utf-8"                                               />
+				<meta name="viewport"  content="width=device-width, initial-scale=1"/>
+				<meta name="generator" content={Astro.generator}                    />
+
+				<!--###  Fonts  ###-->
+				<link href="https://fonts.googleapis.com" rel="preconnect"                        />
+				<link href="https://fonts.gstatic.com"    rel="preconnect" crossorigin="anonymous"/>
+
+			</head>
+
+
+    <!----------------------------------------------------------------------------------------------------------------->
+    <!--  Body                                                                                                       -->
+    <!----------------------------------------------------------------------------------------------------------------->
+
+			<body>
+
+				<slot/>
+
+			</body>
+
+
+	</html>

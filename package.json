@@ -1,0 +1,42 @@
+{
+
+	"name":    "spotify--followed-artists",
+	"version": "1.0.0",
+	"type":    "module",
+	"private": true,
+
+	"scripts": {
+		"dev":     "astro dev",
+		"build":   "astro build",
+		"preview": "astro preview"
+	},
+
+	"dependencies": {
+		"buffer":                 "6.0.3",
+
+		"astro":                  "2.10.12",
+		"@astrojs/solid-js":      "2.2.1",
+
+		"solid-js":               "1.7.11",
+		"solid-use":              "0.7.1",
+
+		"lodash-es":              "4.17.21",
+		"@types/lodash-es":       "4.17.8",
+
+		"clsx":                   "2.0.0",
+
+		"natural-orderby":        "3.0.2",
+
+		"@fontsource/exo-2":      "5.0.8"
+	},
+
+	"devDependencies": {
+		"@types/node":         "20.5.1",
+
+		"typescript":          "5.1.6",
+
+		"sass":                "1.66.1",
+		"postcss-load-config": "4.0.1"
+	}
+
+}

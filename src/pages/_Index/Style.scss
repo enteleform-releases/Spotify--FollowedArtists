@@ -1,0 +1,111 @@
+//###  Sass  ###//
+@use "sass:math";
+@use "sass:map";
+
+
+//####################################################################################################################//
+//##>  Colors                                                                                                       ##//
+//####################################################################################################################//
+
+	$Mono_Settings: (
+		"H_Min":240, "H_Max":240,
+		"S_Min":12,  "S_Max":8,
+		"L_Min":5,   "L_Max":95,
+	);
+
+	@function Color($percent, $settings){
+		/* TODO: handle hue cycling > 360 */
+
+		$H_Min: map.get($settings, "H_Min");
+		$H_Max: map.get($settings, "H_Max");
+		$S_Min: map.get($settings, "S_Min");
+		$S_Max: map.get($settings, "S_Max");
+		$L_Min: map.get($settings, "L_Min");
+		$L_Max: map.get($settings, "L_Max");
+
+		$H_Diff: ($H_Max - $H_Min);
+		$S_Diff: ($S_Max - $S_Min);
+		$L_Diff: ($L_Max - $L_Min);
+
+		$H: (($H_Diff * math.div($percent, 100)) + $H_Min);
+		$S: (($S_Diff * math.div($percent, 100)) + $S_Min);
+		$L: (($L_Diff * math.div($percent, 100)) + $L_Min);
+
+		@return "hsl(" + $H + ", " + $S + "%, "+ $L + "%)";
+	}
+
+	:root{
+		--Mono_0:   #{Color(0,   $Mono_Settings)};
+		--Mono_5:   #{Color(5,   $Mono_Settings)};
+		--Mono_10:  #{Color(10,  $Mono_Settings)};
+		--Mono_15:  #{Color(15,  $Mono_Settings)};
+		--Mono_20:  #{Color(20,  $Mono_Settings)};
+		--Mono_25:  #{Color(25,  $Mono_Settings)};
+		--Mono_30:  #{Color(30,  $Mono_Settings)};
+		--Mono_35:  #{Color(35,  $Mono_Settings)};
+		--Mono_40:  #{Color(40,  $Mono_Settings)};
+		--Mono_45:  #{Color(45,  $Mono_Settings)};
+		--Mono_50:  #{Color(50,  $Mono_Settings)};
+		--Mono_55:  #{Color(55,  $Mono_Settings)};
+		--Mono_60:  #{Color(60,  $Mono_Settings)};
+		--Mono_65:  #{Color(65,  $Mono_Settings)};
+		--Mono_70:  #{Color(70,  $Mono_Settings)};
+		--Mono_75:  #{Color(75,  $Mono_Settings)};
+		--Mono_80:  #{Color(80,  $Mono_Settings)};
+		--Mono_85:  #{Color(85,  $Mono_Settings)};
+		--Mono_90:  #{Color(90,  $Mono_Settings)};
+		--Mono_95:  #{Color(95,  $Mono_Settings)};
+		--Mono_100: #{Color(100, $Mono_Settings)};
+	}
+
+
+//####################################################################################################################//
+//##>  Styles                                                                                                       ##//
+//####################################################################################################################//
+
+	*,
+	* *{
+		user-select: none !important
+	}
+
+	.Hidden{
+		display: none;
+	}
+
+	html,
+	body{
+		width:  100%;
+		height: 100%;
+	}
+
+	body{
+		display:         flex;
+		flex-direction:  column;
+		align-items:     center;
+		justify-content: center;
+		background:      var(--Mono_0 );
+		color:           var(--Mono_70);
+	}
+
+	body > :not(:last-child){
+		margin-bottom: 1.5rem;
+	}
+
+	#Info{
+		font-size:  1.5rem;
+		text-align: center;;
+	}
+
+	#Download,
+	#Retry{
+		padding:       1rem 2rem;
+		font-size:     3rem;
+		background:    var(--Mono_20);
+		color:         var(--Mono_80);
+		border:        2px solid var(--Mono_40);
+		border-radius: 4px;
+		cursor:        pointer;
+
+		&:hover {filter:brightness(1.15);}
+		&:active{filter:brightness(1.3 );}
+	}

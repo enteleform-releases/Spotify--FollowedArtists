@@ -1,0 +1,62 @@
+{"$schema":"https://json.schemastore.org/tsconfig.json",
+
+	"compilerOptions": {
+		"baseUrl": "./",
+
+		"paths": {
+			"Layouts/*": ["./src/Layouts/*"],
+			"Pages/*":   ["./src/pages/*"  ],
+			"Styles/*":  ["./src/Styles/*" ]
+		},
+
+		"target": "ESNext",
+		"module": "ESNext",
+
+		"lib": [
+			"ESNext",
+			"DOM.Iterable",
+			"DOM",
+			"ScriptHost"
+		],
+
+		"types": [
+			"astro/client",
+			"node",
+			"vite/client"
+		],
+
+		"moduleResolution": "NodeNext",
+		"jsx":              "preserve",
+		"jsxImportSource":  "solid-js",
+
+		"noEmit": true,
+
+		"skipLibCheck":        true,
+		"skipDefaultLibCheck": true,
+
+		"allowJs":                      true,
+		"allowSyntheticDefaultImports": true,
+		"downlevelIteration":           true,
+		"emitDecoratorMetadata":        true,
+		"esModuleInterop":              true,
+		"experimentalDecorators":       true,
+		"isolatedModules":              true,
+		"resolveJsonModule":            true,
+		"useDefineForClassFields":      true,
+
+		"strict": false
+	},
+
+	"include": [
+		"./**/*.d.ts",
+		"./astro.config.js", "./astro.config.ts",
+		"./src/**/*.ts", "./src/**/*.cts", "./src/**/*.mts", "./src/**/*.tsx",
+		"./src/**/*.js", "./src/**/*.cjs", "./src/**/*.mjs", "./src/**/*.jsx",
+		"./src/**/*.astro"
+	],
+
+	"exclude": [
+		"node_modules"
+	]
+
+}

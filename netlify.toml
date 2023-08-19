@@ -1,0 +1,14 @@
+[build]
+	command = "yarn run build"
+	functions = "netlify/functions"
+	publish = "dist"
+
+[dev]
+	framework = "astro"
+	command = "yarn run dev" # Command to start your dev server
+	port = 3001 # Port that the dev server will be listening on
+	functions = "netlify/functions"
+
+[[edge_functions]]
+	function = "get_Spotify_Credentials"
+	path = "/get_Spotify_Credentials"
