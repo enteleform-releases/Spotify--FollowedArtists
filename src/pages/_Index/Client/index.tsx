@@ -15,6 +15,8 @@ import {onMount} from "solid-js"
 			const params = new URLSearchParams(document.location.search)
 			const code   = params.get("code")
 
+			window.history.pushState(null, "", rootURL)
+
 			const $Page: $Page = {
 				Download: document.getElementById("Download"),
 				Info:     document.getElementById("Info"    ),
