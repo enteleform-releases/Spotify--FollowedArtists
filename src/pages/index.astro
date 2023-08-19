@@ -7,7 +7,8 @@ import {Client} from "./_Index/Client/index.tsx"
 import Layout from "Layouts/Main/index.astro"
 
 //###  Assets.URLs  ###//
-import URL_Logo from "./_Index/Assets/SpotifyLogo_CMYK.png?url"
+import URL_Logo      from "./_Index/Assets/SpotifyLogo_CMYK.png?url"
+import URL_Thumbnail from "./_Index/Assets/Thumbnail.png?url"
 
 //###  Components  ###//
 import Spinner from "./_Index/Components/Spinner/index.astro"
@@ -18,15 +19,38 @@ import "./_Index/Style.scss"
 
 ---
 <!--#################################################################################################################-->
-<!--##>  HTML                                                                                                      ##-->
+<!--##>  HTML.Head                                                                                                 ##-->
+<!--#################################################################################################################-->
+
+<head>
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type"             content="website"                   />
+	<meta property="og:url"              content="https://metatags.io/"      />
+	<meta property="og:title"            content="Spotify - Followed Artists"/>
+	<meta property="og:description"      content=""                          />
+	<meta property="og:image"            content={URL_Thumbnail}             />
+
+	<!-- Twitter -->
+	<meta property="twitter:card"        content="summary_large_image"       />
+	<meta property="twitter:url"         content="https://metatags.io/"      />
+	<meta property="twitter:title"       content="Spotify - Followed Artists"/>
+	<meta property="twitter:description" content=""                          />
+	<meta property="twitter:image"       content={URL_Thumbnail}             />
+
+</head>
+
+
+<!--#################################################################################################################-->
+<!--##>  HTML.Body                                                                                                 ##-->
 <!--#################################################################################################################-->
 
 	<Layout title="Spotify - Followed Artists">
 
 
-    <!----------------------------------------------------------------------------------------------------------------->
-    <!--  Layout                                                                                                     -->
-    <!----------------------------------------------------------------------------------------------------------------->
+		<!----------------------------------------------------------------------------------------------------------------->
+		<!--  Layout                                                                                                     -->
+		<!----------------------------------------------------------------------------------------------------------------->
 
 			<div id="Logo">
 				<img
@@ -64,9 +88,9 @@ import "./_Index/Style.scss"
 			</div>
 
 
-    <!----------------------------------------------------------------------------------------------------------------->
-    <!--  Script                                                                                                     -->
-    <!----------------------------------------------------------------------------------------------------------------->
+		<!----------------------------------------------------------------------------------------------------------------->
+		<!--  Script                                                                                                     -->
+		<!----------------------------------------------------------------------------------------------------------------->
 
 			<Client client:only/>
 
