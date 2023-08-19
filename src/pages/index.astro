@@ -1,7 +1,7 @@
 ---
 
-//###  App.URLs  ###//
-import URL_Client from "./_Index/Client/index.js?url"
+//###  App  ###//
+import {Client} from "./_Index/Client/index.tsx"
 
 //###  Layout  ###//
 import Layout from "Layouts/Main/index.astro"
@@ -68,10 +68,7 @@ import "./_Index/Style.scss"
     <!--  Script                                                                                                     -->
     <!----------------------------------------------------------------------------------------------------------------->
 
-			<script type="module" define:vars={{URL_Client}}>
-				const {Main} = await import(URL_Client)
-				await Main()
-			</script>
+			<Client client:only/>
 
 
 	</Layout>

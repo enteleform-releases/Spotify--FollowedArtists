@@ -1,43 +1,37 @@
 //###  NPM  ###//
 import {Buffer } from "buffer"
 import {orderBy} from "natural-orderby"
-
-
-//####################################################################################################################//
-//##>  Settings                                                                                                     ##//
-//####################################################################################################################//
-
-	const rootURL = document.location.origin
-
-
-//####################################################################################################################//
-//##>  Setup                                                                                                        ##//
-//####################################################################################################################//
-
-	const params = new URLSearchParams(document.location.search)
-	const code   = params.get("code")
+import {onMount} from "solid-js"
 
 
 //####################################################################################################################//
 //##>  Exports                                                                                                      ##//
 //####################################################################################################################//
 
-	export async function Main(){
-		const $Page: $Page = {
-			Download: document.getElementById("Download"),
-			Info:     document.getElementById("Info"    ),
-			Retry:    document.getElementById("Retry"   ),
-			Spinner:  document.getElementById("Spinner" ),
-		}
+	export function Client(){
+		onMount(async ()=>{
+			const rootURL = document.location.origin
 
-		const SpotifyData = await fetch(".netlify/functions/get_Spotify_Credentials")
-		const Spotify     = (await SpotifyData.json() as Spotify)
-		console.log({Spotify})
+			const params = new URLSearchParams(document.location.search)
+			const code   = params.get("code")
 
-		if(code)
-			{await flow_App({$Page, Spotify, code})}
-		else
-			{flow_Login({$Page, Spotify})}
+			const $Page: $Page = {
+				Download: document.getElementById("Download"),
+				Info:     document.getElementById("Info"    ),
+				Retry:    document.getElementById("Retry"   ),
+				Spinner:  document.getElementById("Spinner" ),
+			}
+
+			const SpotifyData = await fetch(".netlify/functions/get_Spotify_Credentials")
+			const Spotify     = (await SpotifyData.json() as Spotify)
+
+			if(code)
+				{await flow_App({$Page, Spotify, rootURL, code})}
+			else
+				{flow_Login({$Page, Spotify, rootURL})}
+		})
+
+		return null
 	}
 
 
@@ -63,8 +57,8 @@ import {orderBy} from "natural-orderby"
 //####################################################################################################################//
 
 	function flow_Login(
-		{$Page,       Spotify        }:
-		{$Page:$Page, Spotify:Spotify}
+		{$Page,       Spotify,         rootURL       }:
+		{$Page:$Page, Spotify:Spotify, rootURL:string}
 	){
 		const scopes = "user-follow-read"; // Add any additional scopes required
 
@@ -79,8 +73,8 @@ import {orderBy} from "natural-orderby"
 	}
 
 	async function flow_App(
-		{$Page,       Spotify,         code       }:
-		{$Page:$Page, Spotify:Spotify, code:string}
+		{$Page,       Spotify,         rootURL,        code       }:
+		{$Page:$Page, Spotify:Spotify, rootURL:string, code:string}
 	){
 		try{
 			const params = new URLSearchParams()
@@ -138,7 +132,7 @@ import {orderBy} from "natural-orderby"
 			$Page.Spinner .remove()
 			$Page.Download.remove()
 
-			set_Retry_Action({$Page})
+			set_Retry_Action({$Page, rootURL})
 			$Page.Retry.classList.remove("Hidden")
 
 			throw error
@@ -190,8 +184,8 @@ import {orderBy} from "natural-orderby"
 	}
 
 	function set_Retry_Action(
-		{$Page      }:
-		{$Page:$Page}
+		{$Page,       rootURL       }:
+		{$Page:$Page, rootURL:string}
 	){
 		$Page.Retry.addEventListener("click", () => {
 			window.location.replace(rootURL)
