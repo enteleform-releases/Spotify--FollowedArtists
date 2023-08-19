@@ -82,6 +82,8 @@ import {onMount} from "solid-js"
 		{$Page,       Spotify,         rootURL,        code       }:
 		{$Page:$Page, Spotify:Spotify, rootURL:string, code:string}
 	){
+		let response: Response
+
 		try{
 			const params = new URLSearchParams()
 			params.append("grant_type",   "authorization_code")
@@ -94,7 +96,7 @@ import {onMount} from "solid-js"
 				.toString("base64")
 
 			// Exchange the authorization code for an access token
-			const response = await fetch("https://accounts.spotify.com/api/token", {
+			response = await fetch("https://accounts.spotify.com/api/token", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/x-www-form-urlencoded",
@@ -125,7 +127,7 @@ import {onMount} from "solid-js"
 
 			$Page.Spinner.remove()
 
-			set_Download_Action({$Page, fileText, artistCount})
+			set_Download_Action({fileName:"Spotify - Followed Artists.md", $Page, fileText})
 			$Page.Download.classList.remove("Hidden")
 		}
 		catch(error){
@@ -134,11 +136,30 @@ import {onMount} from "solid-js"
 				"See console for more details.",
 			].join("\n")
 
-			$Page.Spinner .remove()
-			$Page.Download.remove()
+			const errorLog = {
+				stack: error.stack,
+			}
+
+			try{
+				errorLog.response = await response.text()
+			}
+			catch(){
+			}
+
+			const fileText = (""
+				+ errorLog.stack
+				+ "\n".repeat(8)
+				+ (errorLog.response ?? "")
+			)
+
+			set_Download_Action({fileName:"Spotify - Followed Artists.error", $Page, fileText})
+			$Page.Download.innerText = "Error Log"
+
+			$Page.Spinner.remove()
 
 			set_Retry_Action({$Page, rootURL})
-			$Page.Retry.classList.remove("Hidden")
+			$Page.Download.classList.remove("Hidden")
+			$Page.Retry   .classList.remove("Hidden")
 
 			throw error
 		}
@@ -191,15 +212,15 @@ import {onMount} from "solid-js"
 	}
 
 	function set_Download_Action(
-		{$Page,       fileText,        artistCount       }:
-		{$Page:$Page, fileText:string, artistCount:number}
+		{$Page,       fileName,        fileText       }:
+		{$Page:$Page, fileName:string, fileText:string}
 	){
 		$Page.Download.addEventListener("click", () => {
 			const blob = new Blob([fileText], {type:"text/plain"})
 			const url  = URL.createObjectURL(blob)
 
 			const $Anchor    = document.createElement("a")
-			$Anchor.download = "Spotify - Followed Artists.md"
+			$Anchor.download = fileName
 			$Anchor.href     = url
 			$Anchor.click()
 
