@@ -5,8 +5,9 @@
 //####################################################################################################################//
 
 	"folders": [
-		{"name":"___  ROOT  ___________________", "path":".."    },
-		{"name":"___  SOURCE  _________________", "path":"../src"},
+		{"name":"___  ROOT  ___________________", "path":".."         },
+		{"name":"___  SERVER  _________________", "path":"../netlify/"},
+		{"name":"___  CLIENT  _________________", "path":"../src/"    },
 	],
 
 
@@ -24,11 +25,13 @@
 		"terminal.integrated.cwd":  "${workspaceFolder:___  ROOT  ___________________}",
 
 		"files.exclude": {
+			"netlify":  true,
 			"src":      true,
 			"env.d.ts": true,
 		},
 
 		"search.exclude": {
+			"netlify":  true,
 			"src":      true,
 			"env.d.ts": true,
 		},
