@@ -18,10 +18,10 @@ import {onMount} from "solid-js"
 			window.history.pushState(null, "", rootURL)
 
 			const $Page: $Page = {
-				Download: document.getElementById("Download"),
-				Info:     document.getElementById("Info"    ),
-				Retry:    document.getElementById("Retry"   ),
-				Spinner:  document.getElementById("Spinner" ),
+				Download: (document.getElementById("Download") as HTMLButtonElement),
+				Info:     (document.getElementById("Info"    ) as HTMLDivElement   ),
+				Retry:    (document.getElementById("Retry"   ) as HTMLButtonElement),
+				Spinner:  (document.getElementById("Spinner" ) as HTMLDivElement   ),
 			}
 
 			const SpotifyData = await fetch(".netlify/functions/get_Spotify_Credentials")

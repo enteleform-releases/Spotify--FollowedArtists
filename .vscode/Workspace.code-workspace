@@ -24,15 +24,13 @@
 		"terminal.integrated.cwd":  "${workspaceFolder:___  ROOT  ___________________}",
 
 		"files.exclude": {
-			"src":          true,
-			"node_modules": true,
-			"env.d.ts":     true,
+			"src":      true,
+			"env.d.ts": true,
 		},
 
 		"search.exclude": {
-			"src":          true,
-			"node_modules": true,
-			"env.d.ts":     true,
+			"src":      true,
+			"env.d.ts": true,
 		},
 
 		"deno.enable":   true,
@@ -40,10 +38,10 @@
 		"deno.unstable": true,
 
 		"deno.importMap": ".netlify/edge-functions-import-map.json",
-		"deno.path":      "C:\\Users\\Fico\\AppData\\Roaming\\netlify\\Config\\deno-cli\\deno.exe",
+		"deno.path":      "C:/Users/Fico/AppData/Roaming/netlify/Config/deno-cli/deno.exe",
 
 		"deno.enablePaths": [
-			"netlify/edge-functions"
+			"netlify/edge-functions",
 		],
 
 	},
@@ -71,7 +69,7 @@
 	"extensions": {
 		"recommendations": [
 			"denoland.vscode-deno",
-		]
-	}
+		],
+	},
 
 }
