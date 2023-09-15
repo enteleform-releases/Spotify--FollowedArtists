@@ -137,7 +137,8 @@ import {onMount} from "solid-js"
 			].join("\n")
 
 			const errorLog = {
-				stack: error.stack,
+				stack:    error.stack,
+				response: (undefined as string),
 			}
 
 			try{
